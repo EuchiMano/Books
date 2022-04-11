@@ -5,9 +5,13 @@
   <div class="row subtitle">
     <h2>Currently Reading</h2>
   </div>
-  <div *ngFor="let libro of listaDeLibros" class="col-6 items">
-    <p>{{ libro.title }}</p>
-    <img src="{{ libro.imageLinks.smallThumbnail }}" alt="asd" />
+  <div class="row">
+    <div *ngFor="let libro of listaDeLibros" class="col-6 items">
+      <div *ngIf="libro.shelf == 'currentlyReading'">
+        <p>{{ libro.title }}</p>
+        <img src="{{ libro.imageLinks.smallThumbnail }}" alt="asd" />
+      </div>
+    </div>
   </div>
 </div>
 
