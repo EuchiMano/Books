@@ -7,7 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BookService {
   _url = 'https://reactnd-books-api.udacity.com/books'
   constructor(private http: HttpClient) {
-    console.log('Servicio Persona');
   }
 
   getAllBooks() {

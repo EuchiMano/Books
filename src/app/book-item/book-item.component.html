@@ -1,3 +1,77 @@
-<div>
-<h1>asdasdan</h1>
+<div class="container-fluid">
+  <div class="row title">
+    <h1>MyReads</h1>
+  </div>
+  <div class="row subtitle">
+    <h2>Currently Reading</h2>
+  </div>
+  <div class="row books">
+    <div *ngFor="let libro of listaDeLibrosNowReading" class="col-6 items">
+      <p>{{ libro.title }}</p>
+      <img src="{{ libro.imageLinks.smallThumbnail }}" alt="asd" />
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select
+          class="botoncito"
+          (selectionChange)="stateChangedFromNowReading($event)"
+        >
+          <mat-option
+            *ngFor="let state of states"
+            [value]="state.value + '*' + libro.id"
+          >
+            {{ state.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row subtitle">
+    <h2>Want to Read</h2>
+  </div>
+  <div class="row books">
+    <div
+      *ngFor="let libroToRead of listaDeLibrosWantedToRead"
+      class="col-6 items"
+    >
+      <p>{{ libroToRead.title }}</p>
+      <img src="{{ libroToRead.imageLinks.smallThumbnail }}" alt="asd" />
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select
+          class="botoncito"
+          (selectionChange)="stateChangedFromNowWanToRead($event)"
+        >
+          <mat-option
+            *ngFor="let state of states"
+            [value]="state.value + '*' + libroToRead.id"
+          >
+            {{ state.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row subtitle">
+    <h2>Read</h2>
+  </div>
+  <div class="row books">
+    <div *ngFor="let libroRead of listaDeLibrosRead" class="col-6 items">
+      <p>{{ libroRead.title }}</p>
+      <img src="{{ libroRead.imageLinks.smallThumbnail }}" alt="asd" />
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select
+          class="botoncito"
+          (selectionChange)="stateChangedFromToRead($event)"
+        >
+          <mat-option
+            *ngFor="let state of states"
+            [value]="state.value + '*' + libroRead.id"
+          >
+            {{ state.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
 </div>
